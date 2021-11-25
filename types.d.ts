@@ -21,7 +21,7 @@ export type Market = Pair<{
     pair: string,
 }>
 
-export interface FetchedResponse {
+export type SummaryResponseData = {
     result: {
         [key: string]: Pair
     }

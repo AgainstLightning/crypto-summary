@@ -1,18 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { FetchedResponse, HydratedData } from '../../types.d'
+import type { SummaryResponseData, HydratedData } from '../../types.d'
 const URL = "https://api.cryptowat.ch/markets/summaries"
 
 const WHITELIST = ["btcusd", "ethusd"]
 
 const handler = async (req : NextApiRequest, res : NextApiResponse) => {
     const apiResponse = await fetch(URL)
-    const data : FetchedResponse = await apiResponse.json()
+    const data : SummaryResponseData = await apiResponse.json()
     const hydrated = hydrator(data)
 
     res.status(200).json(hydrated)
 }
 
-const hydrator = (data : FetchedResponse) : HydratedData => {
+const hydrator = (data : SummaryResponseData) : HydratedData => {
     const hydrated : HydratedData = {};
 
     for (let marketPair in data.result) {
