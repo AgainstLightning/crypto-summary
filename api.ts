@@ -2,7 +2,7 @@ const fetchSummaryData = async () => {
     const response = await fetch("./api/summary")
     const data = await response.json()
     
-    console.log(data);
+    return data
 }
 
 const api = { fetchSummaryData }
